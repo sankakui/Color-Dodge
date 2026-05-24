@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About + FAQ · Color Dodge</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-head {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .page-head h1 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .page-head h1 em { font-style: italic; font-weight: 400; }
+
+    /* TWO-COL LAYOUT */
+    .two-col {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ABOUT SIDE */
+    .about-block { }
+
+    .block-title {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+    }
+
+    .block-title em { font-style: italic; font-weight: 400; }
+
+    .body-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .body-text a { color: var(--accent); text-decoration: none; }
+    .body-text a:hover { text-decoration: underline; }
+
+    /* TEAM LIST */
+    .team-list {
+      list-style: none;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .team-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--r-md);
+      background: var(--tag-bg);
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .team-item:first-child { border-top: 1px solid var(--border); }
+
+    .member-name {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .member-role {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-btn {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.1rem;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: var(--r-pill);
+      transition: all 0.15s;
+    }
+
+    .contact-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* DIVIDER between sections within about */
+    .about-divider {
+      border: none;
+      border-top: 1.5px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* FAQ SIDE */
+    .faq-block { }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 1rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      transition: color 0.15s;
+    }
+
+    .faq-q:hover { color: var(--accent); }
+
+    .faq-icon {
+      font-family: var(--mono);
+      font-size: 1rem;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent); }
+    .faq-item.open .faq-q { color: var(--accent); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .faq-a-inner {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.8;
+      padding: 0 0 1rem;
+    }
+
+    .faq-a-inner a { color: var(--accent); text-decoration: none; }
+    .faq-a-inner a:hover { text-decoration: underline; }
+
+    @media (max-width: 720px) {
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; padding: 2rem 1.2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Color <em>Dodge</em></a>
+  <ul>
+    <li><a href="index.html">home</a></li>
+    <li><a href="info.html" class="active">about + faq</a></li>
+  </ul>
+</nav>
+
+<div class="page-head">
+  <h1>About <em>&</em> FAQ</h1>
+</div>
+
+<div class="two-col">
+
+  <!-- ── ABOUT ── -->
+  <div class="about-block">
+    <h2 class="block-title">About <em>Color Dodge</em></h2>
+    <p class="body-text">
+      Welcome to our little port!
+<br>
+We are a Japanese-English BL manga translation group! We tend to work on fluffy and light-hearted boylove manga or ones with unique themes, with smut as a desert (˶˃ ᵕ ˂˶).
+<br>
+Yes, we're that one photoshop blending mode.
+  
+    </p>
+
+    <hr class="about-divider">
+
+    <h2 class="block-title" style="font-size:1.2rem;"><em>Contact</em></h2>
+    <p class="body-text">Found a typo? Want to join? Just want to say hi? Reach out.</p>
+    <div class="contact-row">
+      <!-- Replace href values with your real links -->
+      <a href="mailto:dodge.porta@email.com" class="contact-btn">email</a>
+      <a href="https://dodgeport.tumblr.com/" target="_blank" class="contact-btn">tumblr</a>
+      <a href="https://discord.com/invite/8kABPWHrbc" target="_blank" class="contact-btn">discord</a>
+    </div>
+  </div>
+
+  <!-- ── FAQ ── -->
+  <div class="faq-block">
+    <h2 class="block-title"><em>FAQ</em></h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How often do you update?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner">Because our members' schedules and ages vary, we cannot maintain a fixed or specific release schedule.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What do you specialize in?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner">Our main focus is BL (Boys’ Love) manga. Depending on Kakui’s mood, our projects range from sweet, fluffy stories to heartbreaking “sobbing” dramas and occasionally even full-on horror.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I request a series?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner">We're not currently taking requests. We only work on series we've personally chosen to pick up. If that changes, we'll announce it.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I re-upload your translations?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner">Please don't repost without credit. If you want to share our work, link back to this site. Aggregator sites are fine as long as they credit Color Dodge.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will you drop a series if it gets licensed?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner">Yes! If an official English release is announced, we'll stop translating that series and ask everyone to support the official version.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does Color Dodge open to collaborate with other groups?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner">We definitely welcome collaborations based on fairness, clear terms, and a proper division of labor. However, we only accept projects that fit our criteria: <b>NO</b> political/religious issues involved, hardcore, focus smut, incest, underage.
+
+</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Regarding retranslation permission
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner">Please contact the team via email. We allow you to use our translations provided that you use your own scans/raws.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = '0';
+    });
+    // open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+</script>
+
+</body>
+</html>

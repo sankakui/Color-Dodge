@@ -173,13 +173,13 @@ STEP 1 — fill these in before anything else
 -->
 <script>
   const CONFIG = {
-    seriesTitle:  "The words that falls for you",   // shown in the top bar
-    projectPage:  "https://dodgeporta.neocities.org/projects/kimini",       // back button destination
+    seriesTitle:  "First Love Makeover Log",   // shown in the top bar
+    projectPage:  "projects/firstlove.html",       // back button destination
     thisChapter:  "01",                 // this chapter's number, e.g. "01"
     prevChapter:  null,                 // e.g. null if first, or "00"
-    nextChapter:  "02",                 // e.g. null if last, or "02"
+    nextChapter:  null,                 // e.g. null if last, or "02"
     // List ALL chapter numbers for the dropdown (oldest → newest)
-    allChapters: ["01", "02", "03", "04", "05", "06", "07"],
+    allChapters: ["01"], ["02"], ["03"], ["04"], ["05"], ["06"], ["07"], ["08"], ["09"]
   };
 </script>
 
@@ -219,55 +219,15 @@ Keep images 800–1000px wide, saved as JPG.
 
 <div class="pages" id="pages">
 
-  <div class="page"><img src="https://i.ibb.co/FpxwstG/00.png" alt="p00"></div>
-  <div class="page"><img src="https://i.ibb.co/k68GnSR0/01.png" alt="p01"></div>
-  <div class="page"><img src="https://i.ibb.co/mCpW93Cq/02.png" alt="p02"></div>
-  <div class="page"><img src="https://i.ibb.co/2Y80qTHf/03.png" alt="p03"></div>
-  <div class="page"><img src="https://i.ibb.co/9kZtRsqp/04.png" alt="p04"></div>
-  <div class="page"><img src="https://i.ibb.co/YBX5Mk2m/05.png" alt="p05"></div>
-  <div class="page"><img src="https://i.ibb.co/sdYRwT1C/06.png" alt="p06"></div>
-  <div class="page"><img src="https://i.ibb.co/kV8Ccwjd/07.png" alt="p07"></div>
-  <div class="page"><img src="https://i.ibb.co/DsQHJTy/08.png" alt="p08"></div>
-  <div class="page"><img src="https://i.ibb.co/Sw5FfSxW/09.png" alt="p09"></div>
-  <div class="page"><img src="https://i.ibb.co/VpxNXrXL/10.png" alt="p10"></div>
-  <div class="page"><img src="https://i.ibb.co/W4cVkJ5p/11.png" alt="p11"></div>
-  <div class="page"><img src="https://i.ibb.co/PZPVBgvN/12.png" alt="p12"></div>
-  <div class="page"><img src="https://i.ibb.co/39mY1GLg/13.png" alt="p13"></div>
-  <div class="page"><img src="https://i.ibb.co/xS0jV0M0/14.png" alt="p14"></div>
-  <div class="page"><img src="https://i.ibb.co/LX9KtJjJ/15.png" alt="p15"></div>
-  <div class="page"><img src="https://i.ibb.co/0RGP2M8z/16.png" alt="p16"></div>
-  <div class="page"><img src="https://i.ibb.co/8g5x8T9n/17.png" alt="p17"></div>
-  <div class="page"><img src="https://i.ibb.co/Y4fTqHYn/18.png" alt="p18"></div>
-  <div class="page"><img src="https://i.ibb.co/rRhcxhFX/19.png" alt="p19"></div>
-  <div class="page"><img src="https://i.ibb.co/pHyJ7Ls/20.png" alt="p20"></div>
-  <div class="page"><img src="https://i.ibb.co/359nMwJh/21.png" alt="p21"></div>
-  <div class="page"><img src="https://i.ibb.co/KcQjsL42/22.png" alt="p22"></div>
-  <div class="page"><img src="https://i.ibb.co/fVSsNNYn/23.png" alt="p23"></div>
-  <div class="page"><img src="https://i.ibb.co/KxrWxpXx/24.png" alt="p24"></div>
-  <div class="page"><img src="https://i.ibb.co/cc2DsYtQ/25.png" alt="p25"></div>
-  <div class="page"><img src="https://i.ibb.co/WN6wQzSM/26.png" alt="p26"></div>
-  <div class="page"><img src="https://i.ibb.co/mgYftS1/27.png" alt="p27"></div>
-  <div class="page"><img src="https://i.ibb.co/fzxXvYjv/28.png" alt="p28"></div>
-  <div class="page"><img src="https://i.ibb.co/WN7S9Cnb/29.png" alt="p29"></div>
-  <div class="page"><img src="https://i.ibb.co/20Tmpq5C/30.png" alt="p30"></div>
-  <div class="page"><img src="https://i.ibb.co/RT8TS8SH/31.png" alt="p31"></div>
-  <div class="page"><img src="https://i.ibb.co/ynk95Dcv/32.png" alt="p32"></div>
-  <div class="page"><img src="https://i.ibb.co/3GYRtfM/33.png" alt="p33"></div>
-  <div class="page"><img src="https://i.ibb.co/nszKMwHD/34.png" alt="p34"></div>
-  <div class="page"><img src="https://i.ibb.co/tpssTwvY/35.png" alt="p35"></div>
-  <div class="page"><img src="https://i.ibb.co/9k3cFycg/36.png" alt="p36"></div>
-  <div class="page"><img src="https://i.ibb.co/Tx4TmkBq/37.png" alt="p37"></div>
-  <div class="page"><img src="https://i.ibb.co/7tvgwZkN/38.png" alt="p38"></div>
-  <div class="page"><img src="https://i.ibb.co/SDGjbxmn/39.png" alt="p39"></div>
-  <div class="page"><img src="https://i.ibb.co/PZ4NWZqs/40.png" alt="p40"></div>
-  <div class="page"><img src="https://i.ibb.co/pjpK4f57/41.png" alt="p41"></div>
-  <div class="page"><img src="https://i.ibb.co/9mk8WtXW/42.png" alt="p42"></div>
-  <div class="page"><img src="https://i.ibb.co/JFMD6TqL/43.png" alt="p43"></div>
-  <div class="page"><img src="https://i.ibb.co/9HKjtNQ3/44.png" alt="p44"></div>
-  <div class="page"><img src="https://i.ibb.co/p64ck7Yp/45.png" alt="p45"></div>
-  <div class="page"><img src="https://i.ibb.co/gbHPZQ76/46.png" alt="p46"></div>
-  <div class="page"><img src="https://i.ibb.co/tPXXwTYr/47.png" alt="p47"></div>
-  <div class="page"><img src="https://i.ibb.co/kRMQYbd/48.png" alt="p48"></div>
+<a href="https://ibb.co/WNbvw8vJ"><img src="https://i.ibb.co/Y4zBMnBs/01.png" alt="01" border="0"></a>
+<a href="https://ibb.co/ycv94p1Y"><img src="https://i.ibb.co/G4Y6H9Lt/02.png" alt="02" border="0"></a>
+<a href="https://ibb.co/Xrryf2gf"><img src="https://i.ibb.co/4nnswmGw/03.png" alt="03" border="0"></a>
+<a href="https://ibb.co/nMq1WKmX"><img src="https://i.ibb.co/3m5FJPdx/04.png" alt="04" border="0"></a>
+<a href="https://ibb.co/0RppXHVN"><img src="https://i.ibb.co/67ccZjJh/05.png" alt="05" border="0"></a>
+<a href="https://ibb.co/5WrXm9qB"><img src="https://i.ibb.co/tMqwghy8/06.png" alt="06" border="0"></a>
+<a href="https://ibb.co/GvKy1dm8"><img src="https://i.ibb.co/6R3zpyQT/07.png" alt="07" border="0"></a>
+<a href="https://ibb.co/ksGbWc6M"><img src="https://i.ibb.co/xt29R583/08.png" alt="08" border="0"></a>
+<a href="https://ibb.co/r2rNCn4k"><img src="https://i.ibb.co/s9Yz0Lyj/09.png" alt="09" border="0"></a>
 
   <!-- keep adding pages above this line -->
 

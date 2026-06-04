@@ -305,8 +305,6 @@
   <ul>
     <li><a href="index.html">home</a></li>
     <li><a href="info.html">about + faq</a></li>
-  </ul>
-  <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">dark</button>
 </nav>
 
 <div class="guide-wrap">
@@ -428,107 +426,6 @@
   </div>
 
   <!-- ══════════════════════════════════════════════
-       TORANOANA
-  ══════════════════════════════════════════════ -->
-  <div class="store-panel" id="panel-toranoana">
-    <div class="slider-wrap">
-      <div class="slider-progress">
-        <div class="slider-progress-fill" id="prog-toranoana"></div>
-      </div>
-      <div class="slides">
-        <div class="slides-inner" id="slides-toranoana">
-
-          <div class="slide">
-            <div class="slide-header">
-              <div class="slide-num">1</div>
-              <div class="slide-title-wrap">
-                <p class="slide-step-label">step 01</p>
-                <h2 class="slide-title">Create a Toranoana account</h2>
-              </div>
-            </div>
-            <div class="slide-body">
-              Go to <a href="https://ec.toranoana.jp" target="_blank">ec.toranoana.jp</a> and click <strong>会員登録</strong> (Register). Fill in your email and password. Toranoana sells both physical and digital doujinshi and manga — great for niche BL titles.
-            </div>
-            <div class="slide-tip">
-              <strong>note —</strong> Toranoana requires age verification for adult content. You may need to verify via credit card or other method.
-            </div>
-          </div>
-
-          <div class="slide">
-            <div class="slide-header">
-              <div class="slide-num">2</div>
-              <div class="slide-title-wrap">
-                <p class="slide-step-label">step 02</p>
-                <h2 class="slide-title">Set up payment</h2>
-              </div>
-            </div>
-            <div class="slide-body">
-              Go to <strong>マイページ</strong> (My Page) → <strong>お支払い方法</strong> (Payment Method). Add your credit card. Visa and Mastercard from overseas generally work. Some users find it easier to use a prepaid card like Wise.
-            </div>
-            <div class="slide-tip">
-              <strong>tip —</strong> If your card gets rejected, try a virtual card from Wise or Revolut — they often work better for Japanese sites.
-            </div>
-          </div>
-
-          <div class="slide">
-            <div class="slide-header">
-              <div class="slide-num">3</div>
-              <div class="slide-title-wrap">
-                <p class="slide-step-label">step 03</p>
-                <h2 class="slide-title">Search for your title</h2>
-              </div>
-            </div>
-            <div class="slide-body">
-              Use the search bar and type the Japanese title or author name. For BL manga, you can also browse under <strong>コミック</strong> → <strong>BL</strong>. Toranoana specializes in indie and doujinshi so you'll find stuff not on Bookwalker here.
-            </div>
-          </div>
-
-          <div class="slide">
-            <div class="slide-header">
-              <div class="slide-num">4</div>
-              <div class="slide-title-wrap">
-                <p class="slide-step-label">step 04</p>
-                <h2 class="slide-title">Choose digital or physical</h2>
-              </div>
-            </div>
-            <div class="slide-body">
-              Each listing shows if it's <strong>電子書籍</strong> (digital) or <strong>紙の本</strong> (physical book). For overseas buyers, digital is easiest. Click the digital option and add to cart — <strong>カートに入れる</strong>.
-            </div>
-            <div class="slide-tip">
-              <strong>tip —</strong> Physical shipping overseas is expensive and slow. Stick to digital unless you really want the physical copy!
-            </div>
-          </div>
-
-          <div class="slide">
-            <div class="slide-header">
-              <div class="slide-num">5</div>
-              <div class="slide-title-wrap">
-                <p class="slide-step-label">step 05</p>
-                <h2 class="slide-title">Complete purchase & read</h2>
-              </div>
-            </div>
-            <div class="slide-body">
-              Go to cart → <strong>ご注文手続き</strong> (Proceed to Order) → confirm payment. Your digital purchase will appear in <strong>購入済み</strong> (Purchased) in My Page. Read in browser or download the Toranoana app.
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="slider-controls">
-        <div class="slide-dots" id="dots-toranoana"></div>
-        <div class="slide-counter">
-          step <span id="cur-toranoana">1</span> / <span id="tot-toranoana">5</span>
-        </div>
-        <div class="slider-btns">
-          <button class="slider-btn prev" onclick="slide('toranoana', -1)" id="prev-toranoana">← prev</button>
-          <button class="slider-btn next" onclick="slide('toranoana', 1)" id="next-toranoana">next →</button>
-        </div>
-      </div>
-    </div>
-    <p class="store-note">→ Visit <a href="https://ec.toranoana.jp" target="_blank">ec.toranoana.jp</a></p>
-  </div>
-
-  <!-- ══════════════════════════════════════════════
        RAKUTEN BOOKS
   ══════════════════════════════════════════════ -->
   <div class="store-panel" id="panel-rakuten">
@@ -630,7 +527,6 @@
 
 <footer class="site-footer">
   <span>Color Dodge · fan scanlation · all rights to original authors</span>
-  <span>hosted on <a href="https://vercel.com" target="_blank">vercel</a></span>
 </footer>
 
 <script>
@@ -700,19 +596,6 @@
     document.querySelectorAll('.store-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('panel-' + store).classList.add('active');
-  }
-
-  // ── DARK MODE ──
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-    document.getElementById('dark-btn').textContent = 'light';
-  }
-
-  function toggleDark() {
-    document.body.classList.toggle('dark');
-    const isDark = document.body.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    document.getElementById('dark-btn').textContent = isDark ? 'light' : 'dark';
   }
 </script>
 

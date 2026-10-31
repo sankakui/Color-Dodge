@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Updates · Color Dodge</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.up-wrap {
+  max-width: 1060px; margin: 0 auto; padding: 2rem 2rem 4rem;
+  display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 2.5rem; align-items: start;
+}
+.up-head { max-width: 1060px; margin: 0 auto; padding: 1.6rem 2rem 0; }
+.up-head h1 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; }
+.up-head h1 em { font-style: italic; font-weight: 400; }
+
+.up-tabs { display: flex; gap: 0.3rem; margin-bottom: 1.2rem; }
+.up-tab {
+  font-family: var(--mono); font-size: 0.72rem; padding: 0.25rem 0.85rem;
+  border: 1px solid var(--border); background: transparent; color: var(--muted);
+  border-radius: 5px; cursor: pointer;
+}
+.up-tab:hover { border-color: var(--ink); color: var(--ink); }
+.up-tab.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.up-tab:focus-visible, .ask-form button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.post { padding: 1.3rem 0 1.4rem; border-bottom: 1px solid var(--border); }
+.post:first-child { padding-top: 0; }
+.post-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-bottom: 0.35rem; }
+.post-title { font-family: var(--display); font-size: 1.45rem; line-height: 1.25; margin-bottom: 0.5rem; }
+.post-body { font-size: 0.95rem; line-height: 1.75; color: var(--ink); white-space: pre-line; max-width: 62ch; }
+.post-link {
+  display: inline-block; margin-top: 0.8rem; font-size: 0.85rem; color: var(--accent);
+  text-decoration: none; border-bottom: 1px solid currentColor;
+}
+
+.post.ask .q {
+  border-left: 3px solid var(--accent); background: var(--surface);
+  padding: 0.7rem 1rem; border-radius: 0 5px 5px 0; font-size: 0.95rem; line-height: 1.65;
+  max-width: 62ch; white-space: pre-line; overflow-wrap: anywhere;
+}
+.post.ask .a { margin-top: 0.8rem; font-size: 0.95rem; line-height: 1.75; max-width: 62ch; white-space: pre-line; }
+
+.empty { color: var(--muted); font-size: 0.9rem; padding: 1rem 0; }
+.more-btn {
+  margin-top: 1.4rem; font-family: var(--mono); font-size: 0.75rem; padding: 0.4rem 1.1rem;
+  border: 1px solid var(--border); background: transparent; color: var(--ink); border-radius: 5px; cursor: pointer;
+}
+.more-btn:hover { border-color: var(--ink); }
+
+/* ── ASK BOX ── */
+.ask-box {
+  position: sticky; top: calc(56px + 1.2rem); border: 1px solid var(--border); background: var(--surface);
+  border-radius: 8px; padding: 1.1rem 1.1rem 1.2rem;
+}
+.ask-box h2 { font-family: var(--display); font-size: 1.15rem; margin-bottom: 0.25rem; }
+.ask-box p.hint { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; }
+.ask-form label { display: block; font-size: 0.78rem; color: var(--muted); margin: 0.7rem 0 0.25rem; }
+.ask-form input[type=text], .ask-form textarea {
+  width: 100%; box-sizing: border-box; font: inherit; font-size: 0.9rem; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 5px; padding: 0.5rem 0.65rem;
+}
+.ask-form textarea { min-height: 110px; resize: vertical; line-height: 1.55; }
+.ask-form input:focus, .ask-form textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+.ask-form .count { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); text-align: right; margin-top: 0.2rem; }
+.ask-form button[type=submit] {
+  margin-top: 0.9rem; width: 100%; font: inherit; font-size: 0.88rem; padding: 0.55rem;
+  border: 0; border-radius: 5px; background: var(--ink); color: var(--bg); cursor: pointer;
+}
+.ask-form button[disabled] { opacity: 0.55; cursor: default; }
+.ask-form .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+.ask-status { margin-top: 0.7rem; font-size: 0.82rem; line-height: 1.5; min-height: 1.2em; }
+.ask-status.ok { color: var(--ink); }
+.ask-status.err { color: var(--accent); }
+
+@media (max-width: 800px) {
+  .up-wrap { grid-template-columns: 1fr; padding: 1.5rem 1.2rem 3rem; gap: 2rem; }
+  .up-head { padding: 1.2rem 1.2rem 0; }
+  .ask-box { position: static; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Color <em>Dodge</em></a>
+  <ul>
+    <li><a href="index.html">home</a></li>
+    <li><a href="updates.html" class="active">updates</a></li>
+    <li><a href="info.html">about + faq</a></li>
+  </ul>
+</nav>
+
+<div class="up-head">
+  <h1>Latest <em>updates</em></h1>
+</div>
+
+<div class="up-wrap">
+  <main>
+    <div class="up-tabs" role="group" aria-label="Filter posts">
+      <button class="up-tab active" data-type="all">All</button>
+      <button class="up-tab" data-type="update">Chapters</button>
+      <button class="up-tab" data-type="ask">Asks</button>
+    </div>
+    <div id="feed"></div>
+    <button class="more-btn" id="more" hidden>Load older posts</button>
+  </main>
+
+  <aside class="ask-box" id="ask">
+    <h2>Ask us something</h2>
+    <p class="hint">Questions about our projects, requests, or anything else. Answered asks show up in the feed.</p>
+    <form class="ask-form" id="askForm" novalidate>
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+      <label for="askName">Name (optional, blank = anonymous)</label>
+      <input type="text" id="askName" name="name" maxlength="40" autocomplete="off">
+      <label for="askText">Your question</label>
+      <textarea id="askText" name="message" maxlength="500" required></textarea>
+      <div class="count"><span id="askCount">0</span>/500</div>
+      <button type="submit" id="askBtn">Send ask</button>
+      <div class="ask-status" id="askStatus" role="status" aria-live="polite"></div>
+    </form>
+  </aside>
+</div>
+
+<script src="posts-data.js"></script>
+<script>
+/* ── SETTINGS ──
+   Get a free access key at https://web3forms.com (enter your email, the key is sent to it).
+   Asks will land in that inbox. */
+const WEB3FORMS_KEY = 'PASTE_YOUR_ACCESS_KEY_HERE';
+const PAGE_SIZE = 10;
+
+/* ── FEED ── */
+let activeType = 'all';
+let shown = PAGE_SIZE;
+const feed = document.getElementById('feed');
+const moreBtn = document.getElementById('more');
+
+function fmtDate(d) {
+  const dt = new Date(d + 'T00:00:00');
+  return isNaN(dt) ? d : dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  return n;
+}
+function renderPost(p) {
+  const art = el('article', 'post ' + (p.type === 'ask' ? 'ask' : 'update'));
+  const meta = fmtDate(p.date) + (p.type === 'update' && p.series ? '  ·  ' + p.series : '');
+  art.appendChild(el('div', 'post-meta', p.type === 'ask' ? fmtDate(p.date) + '  ·  ' + (p.from || 'Anonymous') + ' asked' : meta));
+  if (p.type === 'ask') {
+    art.appendChild(el('div', 'q', p.question));
+    art.appendChild(el('div', 'a', p.answer));
+  } else {
+    art.appendChild(el('h2', 'post-title', p.title));
+    if (p.body) art.appendChild(el('div', 'post-body', p.body));
+    if (p.link) {
+      const a = el('a', 'post-link', 'Read it here');
+      a.href = p.link;
+      art.appendChild(a);
+    }
+  }
+  return art;
+}
+function render() {
+  const list = POSTS
+    .filter(p => activeType === 'all' || p.type === activeType)
+    .sort((a, b) => b.date.localeCompare(a.date));
+  feed.replaceChildren();
+  if (!list.length) feed.appendChild(el('p', 'empty', 'Nothing here yet.'));
+  list.slice(0, shown).forEach(p => feed.appendChild(renderPost(p)));
+  moreBtn.hidden = list.length <= shown;
+}
+document.querySelectorAll('.up-tab').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.up-tab').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  activeType = b.dataset.type; shown = PAGE_SIZE; render();
+}));
+moreBtn.addEventListener('click', () => { shown += PAGE_SIZE; render(); });
+render();
+
+/* ── ASK FORM ── */
+const form = document.getElementById('askForm');
+const txt = document.getElementById('askText');
+const btn = document.getElementById('askBtn');
+const statusEl = document.getElementById('askStatus');
+txt.addEventListener('input', () => { document.getElementById('askCount').textContent = txt.value.length; });
+
+function setStatus(msg, cls) { statusEl.textContent = msg; statusEl.className = 'ask-status ' + (cls || ''); }
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const message = txt.value.trim();
+  if (message.length < 5) { setStatus('Please write a bit more.', 'err'); return; }
+  if (form.botcheck.checked) return;               // bots fill the hidden box
+  if (WEB3FORMS_KEY.startsWith('PASTE_')) { setStatus('Ask box is not set up yet.', 'err'); return; }
+
+  btn.disabled = true; setStatus('Sending…');
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: 'New ask on Color Dodge',
+        from_name: 'Color Dodge asks',
+        name: form.name.value.trim() || 'Anonymous',
+        message
+      })
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || 'failed');
+    form.reset(); document.getElementById('askCount').textContent = '0';
+    setStatus('Sent! If we answer it, it will appear in the feed.', 'ok');
+  } catch (err) {
+    setStatus('Could not send. Please try again in a moment.', 'err');
+  } finally {
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
